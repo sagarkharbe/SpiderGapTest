@@ -1,0 +1,19 @@
+{
+  "name": "question2",
+  "version": "1.0.0",
+  "description": "spidergap coding challenge",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha Tests/**/*.test.js",
+    "test-watch": "nodemon exec 'npm test'"
+  },
+  "author": "sagar kharabe",
+  "license": "MIT",
+  "dependencies": {
+    "expect": "^24.9.0",
+    "lodash": "^4.17.15",
+    "mocha": "^7.0.0",
+    "node-fetch": "^2.6.0"
+  }
+}
