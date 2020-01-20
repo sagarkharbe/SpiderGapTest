@@ -1,7 +1,5 @@
 const fetch = require("node-fetch");
 
-var _ = require("lodash");
-
 const D = 100;
 
 const PI = Math.PI;
@@ -36,7 +34,7 @@ const getNearByPartners = (data = [], distance = D) => {
       }
     }
   });
-  return _.orderBy(partners, ["organization"], ["asc"]);
+  return orderPartnersByName(partners);
 };
 
 const toRadians = coordinates => {
@@ -44,6 +42,16 @@ const toRadians = coordinates => {
     .split(",")
     .map(Number)
     .map(num => num / (180 / PI));
+};
+
+const orderPartnersByName = (partners = []) => {
+  return partners.sort((partnerA, partnerB) => {
+    const nameA = partnerA.organization.toLowerCase();
+    const nameB = partnerB.organization.toLowerCase();
+
+    // sort use merge sort and is base in Unicode points
+    return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+  });
 };
 
 module.exports = {
