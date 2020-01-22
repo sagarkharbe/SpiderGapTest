@@ -55,5 +55,6 @@ const orderPartnersByName = (partners = []) => {
 };
 
 module.exports = {
-  getNearByPartners
+  getNearByPartners,
+  orderPartnersByName
 };

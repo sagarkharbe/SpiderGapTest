@@ -23,4 +23,20 @@ describe("deepClone function", function() {
     var newObject = cloneDeep();
     expect({}).toMatchObject(newObject);
   });
+
+  it("should copy and compare date object", function() {
+    const myObj = {
+      name: "Paddy",
+      address: {
+        town: "Lerum",
+        country: "Sweden",
+        date: new Date(2020, 01, 01)
+      },
+      date: new Date(2020, 01, 01)
+    };
+
+    const newObject = cloneDeep(myObj);
+    expect(newObject.date).toMatchObject(new Date(2020, 01, 01));
+    expect(newObject.address.date).toMatchObject(new Date(2020, 01, 01));
+  });
 });

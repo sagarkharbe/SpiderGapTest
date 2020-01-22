@@ -1,12 +1,15 @@
 const expect = require("expect");
 
-const { getNearByPartners } = require("../FindPartners/index");
+const {
+  getNearByPartners,
+  orderPartnersByName
+} = require("../FindPartners/index");
 
-const allPartners = require("../FindPartners/partners");
+const Partners = require("../FindPartners/partners");
 
 describe("Get Nearby Partners", () => {
   it("should find partners within 100km from main office with default values", () => {
-    const partners = getNearByPartners(allPartners);
+    const partners = getNearByPartners(Partners);
     expect(partners.length).toBe(2);
   });
 
@@ -16,7 +19,17 @@ describe("Get Nearby Partners", () => {
   });
 
   it("should find partners within a given range", () => {
-    const partners = getNearByPartners(allPartners, 300);
+    const partners = getNearByPartners(Partners, 300);
     expect(partners.length).toBe(4);
+  });
+
+  it("should sort partners by name in ascending order", () => {
+    const partners = orderPartnersByName(Partners);
+    expect(partners[0].organization).toBe("Ask Leadership");
+  });
+
+  it("should return an empty array if no array is passed", () => {
+    const partners = orderPartnersByName();
+    expect(partners.length).toBe(0);
   });
 });
