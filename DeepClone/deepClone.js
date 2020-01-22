@@ -27,13 +27,13 @@ const cloneDeep = (inObj = {}) => {
   return outObj;
 };
 
-// let input = { name: "Paddy", address: { town: "Lerum", country: "Sweden" } };
+let input = { name: "Paddy", address: { town: "Lerum", country: "Sweden" } };
 
-// let deepCloneCopy = cloneDeep(input);
+let deepCloneCopy = cloneDeep(input);
 
-// deepCloneCopy.address.country = "Sagar";
+deepCloneCopy.address.country = "Norway";
 
-// console.log(deepCloneCopy, input);
+console.log(deepCloneCopy, input);
 
 module.exports = {
   cloneDeep
